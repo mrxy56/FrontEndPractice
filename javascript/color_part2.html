@@ -1,0 +1,51 @@
+<html>
+<head>
+  <script type="text/javascript" language="javascript">
+      var color=new Array("Azure","Black","Blue","Coral","DarkRed",
+    "Gold","Ivory","MistyRose");
+      var guesses=0;
+      var finished=false;
+      var target;
+      function do_game(){
+          var random_number=Math.random()*8;
+          target=Math.floor(random_number);
+          alert(color[target]);
+
+          while(!finished){
+              guess_input_text=prompt("What color is it?\n"+
+            "Azure Black Blue Coral DarkRed Gold Ivory MistyRose");
+              guesses+=1;
+              finished=check_guess();
+          }
+          var myBody=document.getElementsByTagName("body")[0];
+          myBody.style.background=color[target];
+          alert("You are right! You took " + guesses + " guesses!");
+      }
+      function check_guess(){
+            var flag=false;
+            var tmp;
+            for(var i=0;i<8;i++){
+                if(color[i]==guess_input_text){
+                    tmp=color[i];
+                    flag=true;
+                }
+            }
+            if(!flag){
+                alert("I don’t recognize that color!");
+                return false;
+            }
+            if(tmp==color[target]){
+                return true;
+            }else if(tmp<color[target]){
+                alert("Your input is alphabetically lower than mine!");
+                return false;
+            }else{
+                alert("Your input is alphabetically higher than mine!");
+                return false;
+            }
+        }
+  </script>
+</head>
+<body onload="do_game()">
+</body>
+</html>

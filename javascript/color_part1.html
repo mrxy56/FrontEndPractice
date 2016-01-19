@@ -1,0 +1,28 @@
+<html>
+<head>
+  <script type="text/javascript" language="javascript">
+      var color=new Array("Azure","Black","Blue","Coral","DarkRed",
+    "Gold","Ivory","MistyRose");
+      var guesses=0;
+      var finished=false;
+      function do_game(){
+          var random_number=Math.random()*8;
+          var target=Math.floor(random_number);
+          alert(color[target]);
+
+          while(!finished){
+              guess_input_text=prompt("What color is it?\n"+
+            "Azure Black Blue Coral DarkRed Gold Ivory MistyRose");
+              guesses+=1;
+              if(guess_input_text==color[target]){
+                  var myBody=document.getElementsByTagName("body")[0];
+                  myBody.style.background=color[target];
+                  finished=true;
+              }
+          }
+      }
+  </script>
+</head>
+<body onload="do_game()">
+</body>
+</html>
